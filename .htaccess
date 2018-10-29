@@ -1,0 +1,17 @@
+# Turn on url rewrite
+RewriteEngine On
+Options Indexes FollowSymLinks
+
+# remove www from host
+RewriteCond %{HTTP_HOST} ^www\.(.+)
+RewriteCond %{HTTPS}s/%1 ^(on(s)|offs)/(.+)
+RewriteRule ^ http%2://%3%{REQUEST_URI} [L,R=301]
+
+RewriteBase /
+
+# missing file/directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#redirect to
+RewriteRule ^([^?]*) index.php?request=$1 [L,QSA]
