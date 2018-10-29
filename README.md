@@ -1,2 +1,2 @@
-# app
-PHP Apache2 Framework
+# APP
+Minimal PHP Apache2 Framework
